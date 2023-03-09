@@ -1,0 +1,694 @@
+<head>
+<link rel="stylesheet" href="/static/css/create_bio.css" />
+</head>
+<body>
+<h1>বায়োডাটা তৈরির ফর্ম</h1>
+<main>
+<p>অনুগ্রহ করে (*) অবশ্য পূরণীয় ঘরগুলো পূরণ করুন।<br> সবগুলো প্রশ্নের উত্তর দেয়ার চেষ্টা করবেন। যেটা আপনার বায়োডাটা রীচ করতে সাহায্য করবে। </p>   
+<form method="post" id="personForm" action="" data-upazilas-url="{% url 'ajax_load_upazilas' %}" >
+{% csrf_token %}
+<div>
+    <div class="head"><h1>সাধারণ তথ্য</h1></div>
+    <fieldset>
+      <legend>আপনার সম্পূর্ণ নাম লিখুন <sup>*</sup></legend>
+        {{form.ename}}
+      <label>নাম নেয়া হচ্ছে ভেরিফিকেশনের জন্য, পূর্ণ নাম লিখবেন। আপনার নাম পাবলিকলি প্রকাশ করা হবে না।</label>
+    </fieldset>
+    <fieldset>
+      <legend>বায়োডাটার ধরণ <sup>*</sup></legend>
+        {{form.etypeBiodata}}
+    </fieldset>
+    <fieldset>
+      <legend>বৈবাহিক অবস্থা <sup>*</sup></legend>
+        {{form.emaritalStatus}}
+    </fieldset>
+    <fieldset>
+      <legend>স্থায়ী ঠিকানা (জেলা) <sup>*</sup></legend>
+        {{form.district}}
+    </fieldset>
+    <fieldset>
+      <legend>স্থায়ী ঠিকানা (উপজেলা) <sup>*</sup></legend>
+        {{form.upazila}}
+    </fieldset>
+    <fieldset>
+      <legend>জন্মসন (আসল) <sup>*</sup></legend>
+        {{form.ebirthYear}}
+    </fieldset>
+    <fieldset>
+      <legend>গায়ের রং <sup>*</sup></legend>
+        {{form.eskinColor}}
+    </fieldset>
+    <fieldset>
+      <legend>উচ্চতা <sup>*</sup></legend>
+      {{form.ehightF}}
+        {{form.ehightE}}
+    </fieldset>
+    <fieldset>
+      <legend>ওজন (কেজি) <sup>*</sup></legend>
+       {{form.eweight}}
+    </fieldset>
+    <fieldset>
+      <legend>রক্তের গ্রুপ <sup>*</sup></legend>
+      {{form.ebloodGroup}}
+    </fieldset>
+</div>
+<div> 
+  <div class="head"><h1>ঠিকানা</h1></div>
+    <fieldset>
+        <legend>স্থায়ী ঠিকানা <sup>*</sup></legend>
+        {{form.eparmanentAddress}}
+        <label>বাসা নাম্বার না দিয়ে এলাকা সহ ঠিকানা লিখুন এই ফরমেটেঃ  ইউনিয়ন, উপজেলা, জেলা ।</label>
+    </fieldset>
+    <fieldset>
+        <legend>বর্তমান ঠিকানা <sup>*</sup></legend>
+        {{form.epresentAddress}}
+        <label>বাসা নাম্বার না দিয়ে এলাকা সহ ঠিকানা লিখুন। যেমনঃ মেজরটিলা,সিলেট।</label>
+    </fieldset>
+    <fieldset>
+        <legend>বড় হয়েছেন কোথায়? <sup>*</sup></legend>
+        {{form.eGrowUpAddress}}
+    </fieldset>
+    <fieldset>
+        <legend>আপনার বর্তমান অবস্থান ? <sup>*</sup></legend>
+        {{form.estayNow}}
+        <label>আপনি বাংলাদেশের বাহিরে অন্য কোন দেশে বসবাসরত হলে দিবেন, প্রবাসী।</label>
+    </fieldset>
+</div>
+<div>
+  <div class="head"><h1>শিক্ষাগত যোগ্যতা</h1></div><!--Educational Qualifications>>EQC >>general-->
+    <fieldset>
+        <legend>কোন মাধ্যমে পড়াশোনা করেছেন ? <sup>*</sup></legend>
+        {{form.emedium}}
+        <label>আলিয়া মাদ্রাসা থেকে ফাজিল-কামিল বা স্নাতক-স্নাতকোত্তর করেছেন বা করছেন তারা এবং কওমি মাদ্রাসার শিক্ষিতরা মাদ্রাসা অপশন সিলেক্ট করবেন। আর যারা আলিয়া মাদ্রাসা থেকে দাখিল, আলিম পড়ে পড়ালেখা বাদ দিয়ে দিয়েছেন বা ভার্সিটি, মেডিকেল ইত্যাদিতে বা সমমানে পড়েছেন তারা জেনারেল অপশন সিলেক্ট করবেন। সেক্ষেত্রে আপনি হিফজ করে থাকলে অন্যান্য শিক্ষাগত যোগ্যতা লিখার ঘরে হিফজের বিষয়টি লিখতে পারেন। অন্যথায় আপনি বায়োডাটা জমা দিলে এপ্রুভ করা হবে না। </label>
+    </fieldset>
+    <!--general-->
+    <div class="general">
+      <fieldset class="EQC1">
+        <legend>আপনি কি মাধ্যমিক(SSC)/সমমান পাশ করেছেন? <sup>*</sup></legend>
+        {{form.essc}}
+      </fieldset>
+      <fieldset class="EQC2">
+        <legend>কোন ক্লাস পর্যন্ত পড়েছেন? <sup>*</sup></legend>
+        {{form.ewhichClass}}
+      </fieldset>
+      <fieldset class="EQC3">
+        <legend>মাধ্যমিক (SSC) / সমমান কত সালে পাশ করেছেন? <sup>*</sup></legend>
+        {{form.esscPY}}
+      </fieldset>
+      <fieldset class="EQC3">
+        <legend>মাধ্যমিক (SSC) / সমমান বিভাগ কি ছিল? <sup>*</sup></legend>
+       {{form.esscDept}}
+      </fieldset>
+      <fieldset class="EQC3">
+        <legend>মাধ্যমিক(SSC)/সমমান পরীক্ষার ফলাফল <sup>*</sup></legend>
+       {{form.esscResult}}
+      </fieldset>
+      <fieldset class="EQC3">
+        <legend>আপনি কি উচ্চ মাধ্যমিক (HSC) / সমমান পাশ করেছেন? <sup>*</sup></legend>
+        {{form.ehsc}}
+      </fieldset>
+      <fieldset class="EQC4">
+       <legend>উচ্চ মাধ্যমিক (HSC) / সমমান কোন বর্ষে পড়ছেন? <sup>*</sup></legend>
+      {{form.ehscNotPass}}
+      </fieldset>
+      <fieldset class="EQC5">
+        <legend>ডিপ্লোমা কোন বিষয়ে পড়েছেন? <sup>*</sup></legend>
+        {{form.ediploma}}
+        <label>এভাবে উত্তর দিবেনঃ Diploma in Civil Engineering</label>
+      </fieldset>
+      <fieldset class="EQC5">
+        <legend>শিক্ষা প্রতিষ্ঠানের নাম <sup>*</sup></legend>
+       {{form.ediplomaInstitute}}
+        <label>যে প্রতিষ্ঠান থেকে ডিপ্লোমা পড়েছেন</label>
+      </fieldset>
+      <fieldset class="EQC5">
+        <legend>পাশের সন <sup>*</sup></legend>
+      {{form.ediplomaPY}}
+        <label>ছাত্র হলে বর্ষ লিখবেন। যেমনঃ ২য় বর্ষ।</label>
+      </fieldset>
+      <fieldset class="EQC6">
+        <legend>উচ্চ মাধ্যমিক (HSC) / সমমান কত সালে পাশ করেছেন? <sup>*</sup></legend>
+        {{form.ehscPY}}
+      </fieldset>
+      <fieldset class="EQC6">
+        <legend>উচ্চ মাধ্যমিক (HSC) / সমমান বিভাগ কি ছিল? <sup>*</sup></legend>
+       {{form.ehscDept}}
+      </fieldset>
+      <fieldset class="EQC6">
+        <legend>উচ্চ মাধ্যমিক (HSC) / সমমান পরীক্ষার ফলাফল <sup>*</sup></legend>
+     {{form.ehscResult}}
+      </fieldset>
+      <fieldset class="EQC6">
+        <legend>আপনার স্নাতক / স্নাতক (সম্মান) / সমমান শিক্ষাগত যোগ্যতা থাকলে লিখুন</legend>
+       {{form.eversitySubject}}
+        <label>এভাবে লিখতে পারেনঃ Bachelor of Science(B.sc) in Chemical
+          Engineering(CE), Bachelor of Social Science(BSS) in Political
+          Studies(PSS), Bachelor of Business Administration(BBA).</label>
+      </fieldset>
+      <fieldset class="EQC6">
+        <legend>যে প্রতিষ্ঠান থেকে স্নাতক করেছেন সেই শিক্ষাপ্রতিষ্ঠানের নাম লিখুন <sup>*</sup></legend>
+        {{form.university}}
+        <label>এভাবে লিখতে পারেনঃ মৌলভীবাজার সরকারি কলেজ, মৌলভীবাজার।</label>
+        </fieldset>
+        <fieldset class="EQC6">
+          <legend>স্নাতক পাশের সন</legend>
+         {{form.eversity_passing_Y}}
+          <label>ছাত্র হলে শিক্ষাবর্ষ লিখবেন। যেমনঃ প্রথম বর্ষ। </label>
+        </fieldset>
+        <fieldset class="EQC6">
+          <legend>আপনার স্নাতকোত্তর / সমমান শিক্ষাগত যোগ্যতা থাকলে লিখুন</legend>
+         {{form.emastersSubject}}           
+          <label>এভাবে লিখতে পারেনঃ Masters of Science(M.sc) in Chemical Engineering(CE).</label>
+        </fieldset>
+        <fieldset class="EQC6">
+          <legend>
+            যে প্রতিষ্ঠান থেকে স্নাতকোত্তর করেছেন সেই শিক্ষাপ্রতিষ্ঠানের নাম লিখুন।</legend>
+         {{form.emastersversity}}
+          <label>এভাবে লিখতে পারেনঃ  এম সি কলেজ, সিলেট। </label>
+        </fieldset>
+        <fieldset class="EQC6">
+          <legend>স্নাতকোত্তর পাশের সন</legend>
+        {{form.ev_masters_passing_Y}}
+          <label>ছাত্র হলে শিক্ষাবর্ষ লিখবেন। যেমনঃ প্রথম বর্ষ। </label>
+        </fieldset>
+        <fieldset class="EQC6">
+          <legend>ডক্টরেট বা PhD শিক্ষাগত যোগ্যতা থাকলে লিখুন</legend>
+        {{form.ephd}}
+          <label>পাশের সন এর জায়গায় এভাবে লিখতে পারেনঃ May ২০২৫ বা ছাত্র হলে লিখবেন 2022(Starting PhD Study) to Running.</label>
+        </fieldset>
+    </div>
+    <!--Madrasa>>M-->
+    <fieldset class="M">
+          <legend>কোন ধরনের মাদ্রাসায় পড়েছেন? <sup>*</sup></legend>
+          {{form.emadrasa}}
+    </fieldset>
+    <fieldset class="M">
+        <legend>কুরআনের হিফয করেছেন? </legend>
+        {{form.ehafez}}
+    </fieldset>
+    <div class="aliaMadrasa"><!--aliaMadrasa>>AMC-->
+          <fieldset class="AMC1">
+            <legend>আপনি কি দাখিল পাশ করেছেন? <sup>*</sup></legend>
+            {{form.edhakhil}}
+          </fieldset>
+          <fieldset class="AMC3">
+            <legend>দাখিল কত সালে পাশ করেছেন? <sup>*</sup></legend>
+            {{form.edhakhilPY}}
+          </fieldset>
+          <fieldset class="AMC3">
+            <legend>দাখিলে বিভাগ কি ছিল? <sup>*</sup></legend>
+           {{form.edhakhilDept}}
+          </fieldset>
+          <fieldset class="AMC3">
+            <legend>দাখিল পরীক্ষার ফলাফল <sup>*</sup></legend>
+           {{form.edhakhilResult}}
+          </fieldset>
+          <fieldset class="AMC3">
+            <legend>আপনি কি আলিম পাশ করেছেন? <sup>*</sup></legend>
+            {{form.ealim}}
+          </fieldset>
+         
+          <fieldset class="AMC6">
+            <legend>আলিম কত সালে পাশ করেছেন? <sup>*</sup></legend>
+            {{form.ealimPY}}
+          </fieldset>
+          <fieldset class="AMC6">
+            <legend>আলিম বিভাগ কি ছিল? <sup>*</sup></legend>
+           {{form.ealimDept}}
+          </fieldset>
+          <fieldset class="AMC6">
+            <legend>আলিম পরীক্ষার ফলাফল <sup>*</sup></legend>
+         {{form.ealimResult}}
+          </fieldset>
+          <fieldset class="AMC6">
+            <legend>আপনার ফাজিল/ স্নাতক শিক্ষাগত যোগ্যতা থাকলে লিখুন</legend>
+           {{form.efazilSubject}}
+            <label>এভাবে লিখতে পারেনঃ আল-কুরআন এন্ড
+              ইসলামিক স্টাডিজ বিভাগ।</label>
+          </fieldset>
+          <fieldset class="AMC6">
+            <legend>যে প্রতিষ্ঠান থেকে ফাজিল/ স্নাতক করেছেন সেই শিক্ষাপ্রতিষ্ঠানের নাম লিখুন। <sup>*</sup></legend>
+            {{form.efaziluniversity}}
+            <label>এভাবে লিখতে পারেনঃ সিলেট সরকারি আলিয়া মাদ্রাসা, সিলেট। </label>
+            </fieldset>
+            <fieldset class="AMC6">
+              <legend>ফাজিল/ স্নাতক পাশের সন</legend>
+             {{form.efazil_passing_Y}}
+              <label>ছাত্র হলে শিক্ষাবর্ষ লিখবেন। যেমনঃ প্রথম বর্ষ। </label>
+            </fieldset>
+            <fieldset class="AMC6">
+              <legend>আপনার কামিল/ স্নাতকোত্তর শিক্ষাগত যোগ্যতা থাকলে লিখুন</legend>
+             {{form.ekamilSubject}}           
+              <label>এভাবে লিখতে পারেনঃ আল-হাদীস এন্ড
+                ইসলামিক স্টাডিজ বিভাগ।</label>
+            </fieldset>
+            <fieldset class="AMC6">
+              <legend>যে প্রতিষ্ঠান থেকে কামিল/ স্নাতকোত্তর করেছেন সেই শিক্ষাপ্রতিষ্ঠানের নাম লিখুন।</legend>
+             {{form.ekamilversity}}
+              <label>এভাবে লিখতে পারেনঃ শাহজালাল জামেয়া ইসলামিয়া কামিল মাদরাসা, পাঠানটুলা, সিলেট।  </label>
+            </fieldset>
+            <fieldset class="AMC6">
+              <legend>কামিল/ স্নাতকোত্তর পাশের সন</legend>
+            {{form.ekamil_passing_Y}}
+              <label>ছাত্র হলে শিক্ষাবর্ষ লিখবেন। যেমনঃ প্রথম বর্ষ। </label>
+            </fieldset>
+    </div>
+    <div class="kowmiMadrasa"><!--KMC-->
+            <fieldset class="KMC1">
+              <legend>দাওরায়ে হাদীস পাশ করেছেন?</legend>
+              {{form.edaoraya}}
+            </fieldset>
+            <fieldset class="KMC5">
+              <legend>কোন ক্লাস পর্যন্ত পড়েছেন ?</legend>
+              {{form.eKowmiMadrasaClass}}
+            </fieldset>
+            <fieldset class="KMC2">
+              <legend>কোন ক্লাসে পড়ছেন ?</legend>
+              {{form.edaorayaYear}}
+            </fieldset>
+            <fieldset class="KMC3">
+              <legend>দাওরায়ে হাদীস পাসের সন</legend>
+              {{form.edaorayaPassingYear}}
+            </fieldset>
+            <fieldset class="KMC3">
+              <legend>দাওরায়ে হাদীসের নতিজা কি?</legend>
+              {{form.ehadiserNotija}}
+            </fieldset>
+            <fieldset class="KMC3">
+              <legend>আপনি কি তাখাস্সুস পড়েছেন?</legend>
+              {{form.etakhassus}}
+            </fieldset>
+            <fieldset class="KMC4">
+              <legend>কোন বিষয়ে তাখাস্সুস পড়েছেন?</legend>
+              {{form.etakhassusSubject}}
+            </fieldset>
+            <fieldset class="KMC4">
+              <legend>তাখাস্সুস পাসের সন</legend>
+              {{form.etakhassus_P_Year}}
+              <label>ছাত্র হলে লিখবেন ছাত্র</label>
+            </fieldset>
+            
+    </div>
+    <fieldset>
+        <legend>অন্যান্য শিক্ষাগত যোগ্যতা থাকলে লিখুন</legend>
+        {{form.eotherEducation}}
+        <label>শিক্ষার বিষয়,প্রতিষ্ঠানের নাম, পাশের সন ইত্যাদি বিস্তারিত লিখবেন। কিছু না থাকলে লিখার দরকার নেই।</label>
+    </fieldset>
+</div>
+<div> <!--man >>DOM, women>>DOW-->
+        <div class="head"><h1>পেশা সম্পর্কিত তথ্য</h1></div>
+      <fieldset>
+        <legend>পেশা <sup>*</sup></legend>
+        {{form.eoccupation}}
+        <label>শুধু পদবী লিখবেন এভাবে - ছাত্র, ইমাম, ডাক্তার , ইঞ্জিনিয়ার , ব্যবসায়ী ইত্যাদি। পেশা সম্পর্কে বিস্তারিত লিখার জন্য সামনে প্রশ্ন আছে ।</label>
+      </fieldset>
+      <fieldset>
+        <legend>মাসিক আয়ের পরিমাণ</legend>
+       {{form.eincome}}
+        <label>জানাতে অনিচ্ছুক হলে ঘরটি ফাঁকা রাখতে পারেন ।</label>
+      </fieldset>
+      <fieldset>
+        <legend>কর্মস্থল(কর্মস্থল না থাকলে নাই লিখুন)</legend>
+        {{form.eworkingPlace}}
+      </fieldset>
+      <fieldset id="DOM">
+        <legend>পেশা সম্পর্কে বিস্তারিত <sup>*</sup></legend>
+        {{form.edetailsOccupation}} 
+        <label>আপনার পেশা সম্পর্কে বিস্তারিত লিখবেন। যেমনঃ আপনার ইনকাম হালাল কি না, অফিস কোথায়, আপনার পদবী ও কাজ সম্পর্কে একটু বিস্তারিত বর্ণনা দিতে পারেন, আপনার পেশাগত ভবিষ্যৎ পরিকল্পনাও লিখতে পারেন। আপনি ছাত্র বা বেকার হলে সে বিষয়েও কিছু জানাতে পারেন। যাতে পাত্রীপক্ষ আপনার পেশা সম্পর্কে ক্লিয়ার ধারণা পেয়ে যায়।</label>
+      </fieldset>
+      <fieldset id="DOW">
+        <legend>পেশা সম্পর্কে বিস্তারিত </legend>
+        {{form.edetailsOccupationWomen}}
+        <label>আপনার পেশা সম্পর্কে বিস্তারিত লিখবেন। আপনি যদি চাকুরীজীবি হয়ে থাকেন তাহলে অফিসের অবস্থান, পেশাগত ভবিষ্যৎ পরিকল্পনা, বিয়ের পর চাকরী ও সংসার কিভাবে চালাতে চান ইত্যাদি বিষয় লিখতে পারেন। যদি চাকুরীজীবি না হয়ে থাকেন তাহলে ঘরটি ফাঁকা রাখুন।</label>
+      </fieldset>
+</div>
+<div>
+        <div class="head"><h1>পারিবারিক তথ্য</h1></div>
+      <fieldset>
+        <legend>পিতার নাম (শুধুমাত্র আপনি ও কতৃপক্ষ বাদে কেউ দেখতে পাবে না) <sup>*</sup></legend>
+        {{form.efathername}}
+        <label>পিতার সম্পূর্ণ নাম লিখবেন,শুধুমাত্র ভেরিফিকেশনের জন্য নাম নেয়া হচ্ছে।আপনি এবং ওয়েবসাইট কতৃপক্ষ বাদে কেউ এই নাম দেখতে পাবে না।</label>
+      </fieldset>
+      <fieldset>
+        <legend>মাতার নাম (শুধুমাত্র আপনি ও কতৃপক্ষ বাদে কেউ দেখতে পাবে না) <sup>*</sup></legend>
+       {{form.emothername}}
+        <label>মাতার সম্পূর্ণ নাম লিখবেন,শুধুমাত্র ভেরিফিকেশনের জন্য নাম নেয়া হচ্ছে।আপনি এবং ওয়েবসাইট কতৃপক্ষ বাদে কেউ এই নাম দেখতে পাবে না।</label>
+      </fieldset>
+      <fieldset>
+        <legend>পিতার পেশা <sup>*</sup></legend>
+        {{form.efatherOccupation}}
+        <label>মৃত হলে, প্রথমে (মৃত) লিখার পর পেশা লিখবেন। যেমনঃ (মৃত) ব্যবসায়ী ছিলেন।</label>
+      </fieldset>
+      <fieldset>
+        <legend>মাতার পেশা <sup>*</sup></legend>
+       {{form.emotherOccupation}}
+        <label>মৃত হলে, প্রথমে (মৃত) লিখার পর পেশা লিখবেন। যেমনঃ (মৃত) গৃহিনী ছিলেন।</label>
+      </fieldset>
+      <fieldset>
+        <legend>ভাই কয়জন? <sup>*</sup></legend>
+        {{form.ehavingBrother}}
+      </fieldset>
+      <fieldset id="FB">
+        <legend>ভাইদের সম্পর্কে তথ্য <sup>*</sup></legend>
+        {{form.edetailsBrother}}
+        <label>কয়জন ভাই ও তাদের পেশা ,বৈবাহিক অবস্থা, শিক্ষাগত যোগ্যতা, বর্তমান অবস্থান লিখুন</label>
+      </fieldset>
+      <fieldset>
+        <legend>বোন কয়জন? <sup>*</sup></legend>
+        {{form.ehavingSister}}
+      </fieldset>
+      <fieldset id="FS">
+        <legend>বোনদের সম্পর্কে তথ্য <sup>*</sup></legend>
+        {{form.edetailsSister}}
+        <label>কয়জন বোন ও তাদের পেশা ,বৈবাহিক অবস্থা, শিক্ষাগত যোগ্যতা, বর্তমান অবস্থান লিখুন</label>
+      </fieldset>
+      <fieldset>
+        <legend>পারিবারিক অর্থনৈতিক অবস্থা <sup>*</sup></legend>
+        {{form.esocialStatus}}
+      </fieldset>
+      <fieldset>
+        <legend>চাচা মামাদের পেশা </legend>
+        {{form.euncle}}
+        <label>শুধু মাত্র পেশা লিখবেন। অন্য কোনো কিছু লিখবেন না। জানাতে অনিচ্ছুক হলে ঘরটি ফাঁকা রাখেন।</label>
+      </fieldset>
+      <fieldset>
+        <legend>আপনার পরিবারের দ্বীনি ও অন্যান্য তথ্য <sup>*</sup></legend>
+        {{form.efamily}}
+        <label>আপনার পরিবারের সদস্যদের দ্বীনদারিত্বের হালত লিখবেন।  </label>
+      </fieldset>
+</div>
+<div>
+      <div class="head"><h1>ব্যক্তিগত তথ্য</h1></div> <!--personal information>>PI-->
+      <!--PIM >>man-->
+      <fieldset class="PIM">
+        <legend>সুন্নতি দাঁড়ি আছে কি? <sup>*</sup></legend>
+        {{form.edari}}
+      </fieldset>
+      <fieldset class="PIM">
+        <legend>পায়ের টাখনুর উপর কাপড় পরিধান করেন? <sup>*</sup></legend>
+        {{form.edhaknu}}
+      </fieldset>
+      <fieldset class="PIM">
+        <legend>ঘরের বাহিরে সাধারণত কী ধরণের পোশাক পরেন? <sup>*</sup></legend>
+        {{form.eclothMan}}
+        <label>এভাবে লিখতে পারেনঃ পাঞ্জাবী-পায়জামা সাথে টুপি বা জুব্বা পাগড়ী বা জিন্স প্যান্ট সাথে শার্ট ইত্যাদি নিজের মতো করে লিখুন। </label>
+      </fieldset>
+      <!--end PIM-->
+      <!--PIW>>Women-->
+      <fieldset class="PIW">
+        <legend>ঘরের বাহিরে সাধারণত কী ধরণের পোশাক পরেন? <sup>*</sup></legend>
+        {{form.eclothWomen}}
+        <label>এভাবে লিখতে পারেনঃ কালো বোরকা, নিকাব এবং হাত মোজা-পা মোজা পরি।</label>
+      </fieldset>
+      <fieldset class="PIW">
+        <legend>রান্নাবান্নাতে আপনার পারদর্শিতা কেমন? <sup>*</sup></legend>
+        {{form.eCookingWomen}}
+      </fieldset>
+      <!--end PIW-->
+      <fieldset>
+        <legend>নিয়মিত ফরজ পর্দা পালন করেন কি? কত বছর যাবত ফরজ পর্দা পালন করছেন? <sup>*</sup></legend>
+        {{form.eforojporda}}
+      </fieldset>
+      <fieldset>
+        <legend>প্রতিদিন ৫ ওয়াক্ত নামায আদায় করা হয় কি? <sup>*</sup></legend>
+        {{form.esalat}}
+      </fieldset>
+      <fieldset>
+        <legend>নিয়মিত নামায কত বছর যাবত পড়ছেন? <sup>*</sup></legend>
+        {{form.esalatstart}}
+      </fieldset>
+      <fieldset>
+        <legend>মাহরাম/গাইরে-মাহরাম মেনে চলেন কি? <sup>*</sup></legend>
+        {{form.emahram}}
+        <label>এই বিষয়ে একটু বিস্তারিত লিখবেন। বিশেষ করে গাইরে-মাহরামদের সাথে আপনার চালচলন, আচার-আচরণ, কথাবার্তা, উঠা-বসা ইত্যাদি আপনার মত করে লিখবেন। যাতে পাঠক আপনার সম্পর্কে মাহরাম/গাইরে-মাহরামদের সাথে আপনার পর্দা বিষয়ে স্পষ্ট ধারণা লাভ করতে পারে। </label>
+      </fieldset>
+      <fieldset>
+        <legend>শুদ্ধভাবে কুরআন তিলওয়াত করতে পারেন? <sup>*</sup></legend>
+        {{form.equran}}
+      </fieldset>
+      <fieldset>
+        <legend>কোন মাঝহাব অনুসরণ করেন? <sup>*</sup></legend>
+        {{form.emazhab}}
+      </fieldset>
+      <fieldset>
+        <legend>আপনার রাজনৈতিক দর্শন লিখুন <sup>*</sup></legend>
+        {{form.epolitics}}
+      </fieldset>
+      <fieldset>
+        <legend>নাটক/সিনেমা/সিরিয়াল/গান/খেলা এসব দেখেন বা শুনেন? <sup>*</sup></legend>
+        {{form.emovie}}
+      </fieldset>
+      <fieldset>
+        <legend>মানসিক বা শারীরিক কোন রোগ আছে? <sup>*</sup></legend>
+        {{form.erug}}
+      </fieldset>
+      <fieldset>
+        <legend>দ্বীনের কোন বিশেষ মেহনতে যুক্ত আছেন? <sup>*</sup></legend>
+        {{form.emehnot}}
+        <label>যেমনঃ তাবলীগ।</label>
+      </fieldset>
+      <fieldset>
+        <legend>আপনি কোনো শায়েখ বা আলেম এর সাথে সম্পর্ক রাখেন ? <sup>*</sup></legend>
+        {{form.emurid}}
+      </fieldset>
+      <fieldset>
+        <legend>মাজার সম্পর্কে আপনার ধারণা বা বিশ্বাস কি? <sup>*</sup></legend>
+        {{form.emazar}}
+      </fieldset>
+      <fieldset>
+        <legend>আপনার পছন্দের অন্তত ৩ টি ইসলামী বই এর নাম লিখুন <sup>*</sup></legend>
+        {{form.eislamicbook}}
+      </fieldset>
+      <fieldset>
+        <legend>আপনার পছন্দের অন্তত ৩ জন আলেমের নাম লিখুন <sup>*</sup></legend>
+        {{form.escholar}}
+      </fieldset>
+      <fieldset>
+        <legend>বিশেষ দ্বীনি বা দুনিয়াবি যোগ্যতা (যদি থাকে)</legend>
+        {{form.especialqualification}}
+      </fieldset>
+      <fieldset>
+        <legend>নিজের সম্পর্কে কিছু লিখুন <sup>*</sup></legend>
+        {{form.eaboutyourself}}
+        <label>নিজের পছন্দ-অপছন্দ, শখ-ইচ্ছা ইত্যাদি বিস্তারিত লিখুন। কারণ এই লিখা
+          পরে পাঠক আপনার সম্পর্কে সাধারণ ধারণা লাভ করবে। তাই চিন্তা ভাবনা করে
+          ধীরে সুস্থে লিখবেন।</label>
+      </fieldset>
+</div>
+<div>
+        <div class="head"><h1>বিয়ে সংক্রান্ত তথ্য</h1></div> <!--Marriage information>>MI-->
+      <fieldset id="MI1">
+        <legend>আপনার ডিভোর্সের সময়কাল, কারণ ও সন্তান থাকলে উলেখ্য করুন  <sup>*</sup></legend>
+        {{form.edivorce}}
+        <label>সময়কাল অর্থাৎ কত মাস বা বছরের সংসার হয়েছিল আর ডিভোর্স কবে হয়েছে তা লিখতে হবে। বাচ্চা থাকলে তাদের বয়স ও অন্যান্য বিষয়ে লিখুন।</label>
+      </fieldset>
+      <fieldset id="MI2">
+        <legend>আপনার স্ত্রী ও সন্তান(থাকলে) সম্পর্কে ও একাধিক বিয়ের কারণ লিখুন  <sup>*</sup></legend>
+        {{form.emarried}}
+      </fieldset>
+      <fieldset id="MI3">
+        <legend>আপনার স্ত্রী কবে মারা গেছেন, সময়কাল ও সন্তান থাকলে উলেখ্য করুন  <sup>*</sup></legend>
+        {{form.ebipotnik}}
+        <label>সময়কাল অর্থাৎ কত মাস বা বছরের সংসার হয়েছিল লিখুন । বাচ্চা থাকলে তাদের বয়স ও অন্যান্য বিষয়ে লিখুন।</label>
+      </fieldset>
+      <fieldset id="MI4">
+        <legend>আপনার আগের দাম্পত্য জীবন, সময়কাল ও সন্তান থাকলে উলেখ্য করুন <sup>*</sup></legend>
+        {{form.ebidoba}}
+        <label>সময়কাল অর্থাৎ কত মাস বা বছরের সংসার হয়েছিল আর আপনার স্বামী কবে মারা গেছেন তা লিখতে হবে। বাচ্চা থাকলে তাদের বয়স ও অন্যান্য বিষয়ে লিখুন।</label>
+      </fieldset>
+      <fieldset id="MI5">
+        <legend>আগে বিয়ে হয়ে থাকলে দাম্পত্য জীবন ও সময়কাল উলেখ্য করুন <sup>*</sup></legend>
+        {{form.ebonda}}
+        <label>সময়কাল অর্থাৎ কত মাস বা বছরের সংসার হয়েছিল তা লিখুন। বিয়ে না হয়ে থাকলে 'কোন বিয়ে হয়নি' লিখুন।</label>
+      </fieldset>
+      <fieldset>
+        <legend>আপনার বিয়েতে অভিভাবক রাজি আছে কি না? <sup>*</sup></legend>
+        {{form.eobivabokMotamot}}
+        <label>অভিভাবককের মতামত না নিয়ে বায়োডাটা আপলোড করবেন না। আমরা বায়োডাটা এপ্রুভ করার আগে অভিভাবককের মতামত আছে কিনা ভেরিফিকেশন করে নিব। অভিভাবককের মতামত না থাকলে বায়োডাটা জমা দিলে বায়োডাটা এপ্রুভ করা হবে না।</label>
+      </fieldset>
+      <fieldset>
+        <legend>বিয়ে কেন করছেন? বিয়ে সম্পর্কে আপনার ধারণা কি? <sup>*</sup></legend>
+        {{form.ereasonMarry}}
+      </fieldset>
+      <fieldset id="probasi">
+        <legend>বর্তমানে কোন দেশে আছেন? আপনার ওই দেশে নাগরিকত্ব আছে কি না? দেশে কখন আসবেন? বিয়ে করে স্ত্রীকে প্রবাসে নিয়ে যাবেন নাকি আপনি বাড়িতে চলে আসবেন? এ সম্পর্কে বিস্তারিত : (লিখুন) <sup>*</sup></legend>
+        {{form.eporbasi}}
+      </fieldset>
+      <fieldset id="probasiWomen">
+        <legend>বর্তমানে কোন দেশে আছেন? আপনার ওই দেশে নাগরিকত্ব আছে কি না? দেশে কখন আসবেন? বিয়ে করে স্বামীকে প্রবাসে নিয়ে যাবেন নাকি আপনি বাড়িতে চলে আসবেন? এ সম্পর্কে বিস্তারিত : (লিখুন) <sup>*</sup></legend>
+        {{form.eprobasiWomen}}
+      </fieldset>
+      <!--Only for man>>start-->
+      <fieldset class="MIM">
+        <legend>বিয়ের পর আপনি স্ত্রীকে পর্দার পরিবেশ দিতে পারবেন? <sup>*</sup></legend>
+        {{form.ewifeporda}}
+      </fieldset>
+      <fieldset class="MIM">
+        <legend>স্ত্রী বিবাহের পরে পড়তে চাইলে অনুমতি দিবেন? <sup>*</sup></legend>
+        {{form.ewifeeducation}}
+      </fieldset>
+      <fieldset class="MIM">
+        <legend>বিয়ের পর কি স্ত্রীকে চাকরী করতে দিতে চান? <sup>*</sup></legend>
+        {{form.ewifejob}}
+      </fieldset>
+      <fieldset class="MIM">
+        <legend>বিয়ের পর স্ত্রীকে কোথায় নিয়ে থাকবেন? <sup>*</sup></legend>
+        {{form.ewifestay}}
+      </fieldset>
+      <fieldset class="MIM">
+        <legend>বিয়ে উপলক্ষে আপনি বা আপনার পরিবার পাত্রীপক্ষ থেকে যৌতুক, ইফতারি, উপহার, অর্থ ইত্যাদি আশা করবেন কি না? <sup>*</sup></legend>
+        {{form.ewifeDowry}}
+      </fieldset>
+      <!--Only for man>>end-->
+      <!--Only for women>>start>>MIW-->
+      <fieldset class="MIW">
+        <legend>আপনি কি বিয়ের পরে চাকুরি করতে ইচ্ছুক? <sup>*</sup></legend>
+        {{form.ejob}}
+      </fieldset>
+      <fieldset class="MIW">
+        <legend>বিয়ের পরে পড়াশোনা চালিয়ে করতে চান? (ছাত্রী হলে) </legend>
+        {{form.eeducation}}
+      </fieldset>
+      <fieldset class="MIW">
+        <legend>বিয়ের পরে চাকরী চালিয়ে করতে চান? (চাকরিজীবী হলে) </legend>
+        {{form.ejobcontinue}}
+      </fieldset>
+      <fieldset class="MIW">
+        <legend>স্বামীর আনুগত্যের ব্যাপারে আপনার মতামত কি বা এই বিষয়ে আপনি কেমন ধারণা পোষণ করেন ? <sup>*</sup></legend>
+        {{form.esamiLoyalty}}
+      </fieldset>
+      <!--Only for women>>end-->
+      <fieldset>
+        <legend>বিয়ে কি সুন্নত নিয়মে করতে চান? <sup>*</sup></legend>
+        {{form.ebiyeSunnat}}
+      </fieldset>
+      <fieldset>
+        <legend>দেনমোহরের ব্যাপারে আপনার মন্তব্য কি? <sup>*</sup></legend>
+        {{form.edenmohar}}
+      </fieldset>
+      <fieldset>
+        <legend>বিশেষ কিছু যদি জানাতে চান।</legend>
+        {{form.especialKichu}}
+        <label>আপনার কোনো শর্ত বা উপরে লিখার সুযোগ হয় নি এমন কিছু জানানোর থাকলে এই
+          ঘরে লিখতে পারেন। যেমনঃ ছাত্র অবস্থায় বিয়ে করলে কিভাবে ভরণপোষণ করবেন
+          বা সংসার চালাবেন, পারিবারিক বা ব্যক্তিগত কোনো সুবিধা বা অসুবিধা
+          ইত্যাদি যে কোনো বিষয়ে যত ইচ্ছা লিখতে পারবেন। যদি কিছুই না লিখতে চান,
+          তাহলে ঘরটি ফাঁকা রাখবেন।</label>
+      </fieldset>
+</div>
+<div>
+        <div class="head"><h1>যে রকম জীবনসঙ্গী আশা করেন</h1></div> 
+      <fieldset>
+        <legend>বয়স <sup>*</sup></legend>
+        {{form.eLPYear}}
+      </fieldset>
+      <fieldset>
+        <legend>নূন্যতম উচ্চতা <sup>*</sup></legend>
+       {{form.eLPHeight}}
+      </fieldset>
+      <fieldset>
+        <legend>গাত্রবর্ণ <sup>*</sup></legend>
+        {{form.eLPSkinColor}}
+      </fieldset>
+      <fieldset>
+        <legend>নূন্যতম শিক্ষাগত যোগ্যতা <sup>*</sup></legend>
+        {{form.eLPEducationalQualification}}
+      </fieldset>
+      <fieldset>
+        <legend>জেলা <sup>*</sup></legend>
+        {{form.eLPDistrict}}
+      </fieldset>
+      <fieldset>
+        <legend>বৈবাহিক অবস্থা <sup>*</sup></legend>
+        {{form.eLPMaritalStatus}}
+      </fieldset>
+      <fieldset>
+        <legend>পেশা <sup>*</sup></legend>
+       {{form.eLPOccupation}}
+        <label>এভাবে লিখতে পারেনঃডাক্তার, ইঞ্জিনিয়ার, যেকোনো পেশা। আবার আপনি যদি
+          শিক্ষার্থী কাউকে বিয়ে করতে আগ্রহী থাকেন কিন্তু সকল শিক্ষার্থীর
+          ক্ষেত্রে আগ্রহী নন তবে ডাক্তার ,ইঞ্জিনিয়ার,চাকুরীজীবী বা যেকোনো
+          পেশার পাশাপাশি এভাবে লিখিতে পারেনঃ শিক্ষার্থী হলে অনার্স থার্ড ইয়ার
+          বা ফাইনাল ইয়ার বা মাস্টার্স অধ্যয়নরত এমন কেউ।এই ঘরে এমন ভাবে বর্ণনা
+          দিবেন যাতে করে আপনার বা আপনার পরিবারের পছন্দ অনুযায়ী পাত্র/পাত্রীর
+          পেশা সম্পর্কে ক্লিয়ার ধারণা পাওয়া যায়।</label
+        >
+      </fieldset>
+      <fieldset>
+        <legend>পারিবারিক অর্থনৈতিক ও সামাজিক অবস্থা <sup>*</sup></legend>
+        {{form.eLPFamilyStatus}}
+      </fieldset>
+      <!--<fieldset>
+        <legend>অর্থনৈতিক অবস্থা <sup>*</sup></legend>
+        {{form.eLPFamilyEconomicStatus}}
+      </fieldset>-->
+      <fieldset>
+        <legend>
+          জীবনসঙ্গীর যে বৈশিষ্ট্য বা গুণাবলী আশা করেন <sup>*</sup>
+        </legend>
+        {{form.eLPVehabiour}}
+        <label>এই পয়েন্ট অনেক গুরুত্বপূর্ণ। সময় নিয়ে বিস্তারিত লিখুন। কোন বিশেষ শর্ত থাকলে তা-ও লিখতে পারেন।</label>
+      </fieldset>
+</div>
+<div>
+      <div class="head"><h1>কর্তৃপক্ষের জিজ্ঞাসা</h1></div>
+      <fieldset>
+        <legend>
+          আপনি আল্লাহর নামে শপথ করে সাক্ষ্য দিন, যে তথ্যগুলো দিচ্ছেন সব সত্য? <sup>*</sup>
+        </legend>
+       {{form.eshopot}}
+      </fieldset>
+      <fieldset>
+        <legend> কোনো মিথ্যা তথ্য দিয়ে থাকলে তার দায়ভার ওয়েবসাইট কর্তৃপক্ষ নিবে না।
+          আপনি কি রাজি? <sup>*</sup></legend>
+       {{form.eFalseInformation}}
+      </fieldset>
+</div>
+<div>
+      <div class="head"><h1>যোগাযোগ</h1></div>
+      <fieldset>
+        <legend>অভিভাবকের মোবাইল নাম্বার <sup>*</sup></legend>
+        {{form.eguardianNumber}}
+        <label>অবশ্যই নাম্বার ইংরেজীতে লিখবেন। নাম্বার লিখবেন এভাবে: 01700-000000।
+          সব সময় খোলা থাকবে এমন নাম্বার লিখবেন। নাম্বার বন্ধ থাকার আশংকা থাকলে
+          দুইটি নাম্বার লিখতে পারেন। বিঃদ্রঃ নিজের নাম্বার দিলে ভেরিফিকেশনে
+          বায়োডাটা এপ্রুভ হবে না। এই ব্যাপারে আমরা সর্বোচ্চ কঠোর থাকবো।</label
+        >
+      </fieldset>
+      <fieldset>
+        <legend>অভিভাবকের সাথে সম্পর্ক <sup>*</sup></legend>
+        {{form.eguardianRelation}}
+        <label>যে অভিভাবকের নাম্বার দিয়েছেন তার সাথে আপনার সম্পর্ক কি তা লিখবেন।
+          এভাবে লিখবেনঃ বাবা/মা/ভাই/বোন ।</label
+        >
+      </fieldset>
+      <fieldset>
+        <legend>বায়োডাটা গ্রহণের ই-মেইল (E-mail) এড্রেস </legend>
+        {{form.econtactEmail}}
+        <label>ই-মেইলটি নির্ভুলভাবে লিখুন কারণ অপরপক্ষ এই ই-মেইলে বায়োডাটার পাঠাতে
+          পারে।</label>
+      </fieldset>
+      <fieldset>
+        <legend>আপনার নাম্বার (শুধুমাত্র আপনি ও কতৃপক্ষ বাদে কেউ দেখতে পাবে না)
+        <sup>*</sup></legend>
+        {{form.econtactNumber}}
+        <label>ভেরিফিকেশন বা অন্য যে কোনো প্রয়োজনে ওয়েবসাইট কতৃপক্ষ থেকে আপনাকে কল
+          দেয়ার প্রয়োজন হতে পারে। তাই আপনার নাম্বার আমাদের কাছে রাখা হচ্ছে। এই
+          নাম্বার যারা যোগাযোগে আগ্রহী তাদের প্রদান করা হবে না।আপনার দেয়া
+          ইমেইল ও অভিভাবকের নাম্বার তাদের প্রদান করা হবে।অবশ্যই নাম্বার
+          ইংরেজিতে লিখবেন।</label>
+      </fieldset>
+</div>
+<div class="line"></div>
+      <!--<input type="submit" value="বায়োডাটা জমা দিন ">-->
+      <div class="button_wrapper">
+      <button type="submit" class="button" id="save_change" name="save_change" style="vertical-align:middle"><span>Save Change </span></button>
+      <button type="submit" class="button btn-disabled" id="submit_button" name="submit_biodata" style="vertical-align:middle" disabled><span>{% if user.profile.is_submit %}Update Biodata{% else %}বায়োডাটা জমা দিন{% endif %} </span></button>
+    </div>
+</form>
+</main>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/static/script/create_bio/create_bio.js">
+  
+</script>
+</body>

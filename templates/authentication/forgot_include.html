@@ -1,0 +1,23 @@
+<head>
+<link rel="stylesheet" href="/static/css/authentication/forgot.css">
+</head>
+<body>
+	<div class="authent">
+	{% include "messages.html" %}
+	<h1>Forgot your password?</h1> 
+	<h4>পাসওয়ার্ড ভুলে গেলে চিন্তা করবেন না। আপনার ইমেইল ফর্মে দেন এবং ইমেইল চেক করেন।</h4>
+	<form action="{% url 'request-password' %}" method="post"> 
+	{% csrf_token %}
+		<div class="con"> 
+			<i class="fas fa-envelope"></i>
+			  <input class="input" type="email" placeholder="Email" name="email" required value="{{email}}">
+		</div>
+			<button type="submit">Reset Password</button>	
+	</form>
+    <a href="{% url 'login' %}">Back to Login</a>
+	</div>
+
+ 
+
+</body>
+</html>

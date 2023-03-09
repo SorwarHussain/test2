@@ -1,0 +1,4 @@
+<option disabled selected="true" value="">-----Select Upazila----</option>
+{% for upazila in upazilas %}
+<option value="{{ upazila.pk }}">{{ upazila.name }}</option>
+{% endfor %}

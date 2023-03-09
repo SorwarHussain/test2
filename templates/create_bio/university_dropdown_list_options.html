@@ -1,0 +1,4 @@
+<option disabled selected="true" value="">-----Select University----</option>
+{% for university in universities %}
+<option value="{{ university.pk }}">{{ university.name }}</option>
+{% endfor %}
